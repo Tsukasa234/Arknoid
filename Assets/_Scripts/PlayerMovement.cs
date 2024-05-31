@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 // using System.Numerics;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
+    //Variable para el componente de fisicas
     private Rigidbody2D _rb;
 
     private float inputValue = 0;

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[RequireComponent(typeof(AudioSource))]
 public class Ball : MonoBehaviour
 {
 
@@ -12,10 +13,17 @@ public class Ball : MonoBehaviour
 
     private Vector2 initialBallPosition;
 
+    private AudioSource _as;
+
+    [SerializeField] private AudioClip playerSound, brickSound, deathSound, wallSound;
+
+
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        _as = GetComponent<AudioSource>();
         
         initialBallPosition = transform.position;
 
@@ -28,6 +36,27 @@ public class Ball : MonoBehaviour
         if (other.gameObject.CompareTag("Deadzone"))
         {
             GameManager.Instance.LostHealth();
+        }
+
+        if (other.gameObject.CompareTag("Player"))
+        {
+            _as.clip = playerSound;
+            _as.Play();
+        }
+        else if (other.gameObject.CompareTag("Brick"))
+        {
+            _as.clip = brickSound;
+            _as.Play();
+        }
+        else if (other.gameObject.CompareTag("Wall"))
+        {
+            _as.clip = wallSound;
+            _as.Play();
+        }
+        else if (other.gameObject.CompareTag("Deadzone"))
+        {
+            _as.clip = deathSound;
+            _as.Play();
         }
     }
 

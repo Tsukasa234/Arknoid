@@ -8,6 +8,7 @@ public class Bricks : MonoBehaviour
     {
         if (other.gameObject.tag == "Ball")
         {
+            GameManager.Instance.CompleteLevel();
             Destroy(this.gameObject);
         }
     }

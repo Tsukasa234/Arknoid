@@ -13,5 +13,19 @@ public class Ball : MonoBehaviour
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+
+        velocity.x = Random.Range(-1f, 1f);
+        velocity.y = 1;
+
+        
+
+        _rb.AddForce(velocity.normalized * speed);
+    }
+
+    private void OnCollisionEnter2D(Collision2D other) {
+        if(other.gameObject.name == "Deadzone")
+        {
+            Destroy(gameObject);
+        }
     }
 }

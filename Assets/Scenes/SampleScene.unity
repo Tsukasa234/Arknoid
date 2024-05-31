@@ -315,7 +315,7 @@ GameObject:
   - component: {fileID: 246716455}
   - component: {fileID: 246716454}
   m_Layer: 0
-  m_Name: Wall4
+  m_Name: Deadzone
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -773,6 +773,37 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16839f736392fd84eb666d4ebddb4b2e, type: 3}
+--- !u!1 &653389354
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 653389355}
+  m_Layer: 0
+  m_Name: GameObject
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &653389355
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 653389354}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &715349420 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5115167687020709220, guid: 16839f736392fd84eb666d4ebddb4b2e, type: 3}
@@ -1104,7 +1135,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 4
+  m_LinearDrag: 1
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -1197,7 +1228,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc2ab3ba88c9c994b961c19f5643e592, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 5
+  moveSpeed: 15
 --- !u!1 &1123733111
 GameObject:
   m_ObjectHideFlags: 0
@@ -1210,9 +1241,10 @@ GameObject:
   - component: {fileID: 1123733114}
   - component: {fileID: 1123733113}
   - component: {fileID: 1123733112}
+  - component: {fileID: 1123733116}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1226,7 +1258,7 @@ CircleCollider2D:
   m_GameObject: {fileID: 1123733111}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 1ff0b26eeae83f94098631abe68ae8ef, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1266,8 +1298,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_AngularDrag: 0
+  m_GravityScale: 0
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
@@ -1346,6 +1378,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1123733116
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123733111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f854b04ea07e4ec439ed6e0faf21fad0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speed: 350
 --- !u!4 &1146287062 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5115167687020709220, guid: 16839f736392fd84eb666d4ebddb4b2e, type: 3}
@@ -2767,3 +2812,4 @@ SceneRoots:
   - {fileID: 1123733115}
   - {fileID: 844329715}
   - {fileID: 1564301302}
+  - {fileID: 653389355}

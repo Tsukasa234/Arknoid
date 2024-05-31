@@ -1,10 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager Instance { get; private set; }
+
+    [SerializeField] private int lives = 3;
+
+    public int Lives { get { return lives; } }
 
     private void Awake()
     {
@@ -14,16 +19,23 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-    // Start is called before the first frame update
-    void Start()
+    public void LostHealth()
     {
-
+        if (lives > 0)
+        {
+            lives--;
+            ResetLevel();
+        }
+        else
+        {
+            lives = 0;
+            SceneManager.LoadScene("GameOver");
+        }
     }
 
-    // Update is called once per frame
-    void Update()
+    public void ResetLevel()
     {
-
+        FindObjectOfType<Ball>().ResetBall();
+        FindObjectOfType<PlayerMovement>().ResetPlayer();
     }
 }

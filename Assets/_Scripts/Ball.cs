@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class Ball : MonoBehaviour
 {
@@ -9,23 +10,33 @@ public class Ball : MonoBehaviour
     [SerializeField] private float speed = 300;
     private Vector2 velocity = Vector2.zero;
 
+    private Vector2 initialBallPosition;
+
     // Start is called before the first frame update
     void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
-
-        velocity.x = Random.Range(-1f, 1f);
-        velocity.y = 1;
-
         
+        initialBallPosition = transform.position;
 
-        _rb.AddForce(velocity.normalized * speed);
+       ResetBall();
+
     }
 
-    private void OnCollisionEnter2D(Collision2D other) {
-        if(other.gameObject.name == "Deadzone")
+    private void OnCollisionEnter2D(Collision2D other)
+    {
+        if (other.gameObject.CompareTag("Deadzone"))
         {
-            Destroy(gameObject);
+            GameManager.Instance.LostHealth();
         }
+    }
+
+    public void ResetBall()
+    {
+        transform.position = initialBallPosition;
+        velocity.x = Random.Range(-1f, 1f);
+        velocity.y = 1;
+        _rb.velocity = Vector2.zero;
+        _rb.AddForce(velocity.normalized * speed);
     }
 }

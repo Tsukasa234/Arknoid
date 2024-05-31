@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 // using System.Numerics;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -13,9 +14,12 @@ public class PlayerMovement : MonoBehaviour
 
     [SerializeField] private float moveSpeed = 25;
 
+    private Vector2 initialPosition;
+
     private void Start()
     {
         _rb = GetComponent<Rigidbody2D>();
+        initialPosition = transform.position;
     }
 
     // Update is called once per frame
@@ -37,5 +41,11 @@ public class PlayerMovement : MonoBehaviour
         }
 
         _rb.AddForce(direction * moveSpeed * Time.deltaTime * 100);
+    }
+
+    public void ResetPlayer()
+    {
+        transform.position = initialPosition;
+        _rb.velocity = Vector2.zero;
     }
 }
